@@ -160,12 +160,12 @@ class TestSnippetPrefix(object):
 class TestSnippetBody(object):
     def test_snippet_body_of_barscalculated(self):
         snippet = Function(barscalculated_cell).to_snippet()
-        assert snippet['body'] == "BarsCalculated(${1:int indicator_handle})$0"
+        assert snippet['body'] == ["BarsCalculated(${1:int indicator_handle})$0"]
 
 
     def test_snippet_body_of_chartsymbol(self):
         snippet = Function(chartsymbol_cell).to_snippet()
-        assert snippet['body'] == "ChartSymbol(${1:long chart_id=0})$0"
+        assert snippet['body'] == ["ChartSymbol(${1:long chart_id=0})$0"]
 
 
 class TestSnippetDescription(object):

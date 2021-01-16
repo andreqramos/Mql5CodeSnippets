@@ -28,7 +28,7 @@ class Function(object):
         # remove the lasts',' and space
         snippet_body = snippet_body[:-2]
         snippet_body += ")$0"
-        return snippet_body
+        return [snippet_body]
 
 
     def to_snippet(self):
