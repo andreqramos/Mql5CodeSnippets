@@ -103,3 +103,35 @@ class TestParameterToStr(object):
     def test_parameter_to_str_equals_long_chart_id(self):
         parameter = Parameter('chart_id=0', 'long')
         assert str(parameter) == 'long chart_id=0'
+
+
+class TestParametersEquals(object):
+    def test_parameters_are_equals_case_1(self):
+        parameter1 = Parameter('indicator_handle', 'int')
+        parameter2 = Parameter('indicator_handle', 'int')
+        assert parameter1 == parameter2
+
+
+    def test_parameters_are_equals_case_2(self):
+        parameter1 = Parameter('array[]', 'const void&')
+        parameter2 = Parameter('array[]', 'const void&')
+        assert parameter1 == parameter2
+
+
+    def test_parameters_are_not_equals_case_1(self):
+        parameter1 = Parameter('indicator_handle', 'int')
+        parameter2 = Parameter('indicator_handle', 'any')
+        assert parameter1 != parameter2
+
+
+    def test_parameters_are_not_equals_case_2(self):
+        parameter1 = Parameter('indicator_handle', 'int')
+        parameter2 = Parameter('any', 'int')
+        assert parameter1 != parameter2
+
+
+    def test_parameters_are_not_equals_case_3(self):
+        parameter1 = Parameter('indicator_handle', 'int')
+        parameter2 = Parameter('any', 'any')
+        assert parameter1 != parameter2
+
