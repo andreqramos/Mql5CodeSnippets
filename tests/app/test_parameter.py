@@ -135,3 +135,15 @@ class TestParametersEquals(object):
         parameter2 = Parameter('any', 'any')
         assert parameter1 != parameter2
 
+
+    def test_parameters_are_not_same_instances_1(self):
+        parameter1 = Parameter('indicator_handle', 'int')
+        parameter2 = ""
+        assert parameter1 != parameter2
+
+
+    def test_parameters_are_not_same_instances_2(self):
+        parameter1 = Parameter('indicator_handle', 'int')
+        parameter2 = []
+        assert parameter1 != parameter2
+
