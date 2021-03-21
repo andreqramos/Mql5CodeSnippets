@@ -2,15 +2,15 @@ from bs4 import BeautifulSoup
 from src.app.parameter import Parameter
 
 class Function(object):
-    def __init__(self, cell: str):
-        soup = BeautifulSoup(cell, features="lxml")
+    def __init__(self, html: str):
+        soup = BeautifulSoup(html, 'html.parser')
         # name attribute
         self.name =  soup.find('span', class_='f_Functions').get_text()
         # type attribute
         self.type = soup.find('span', class_='f_Keywords').get_text()
         self.type = self.type.replace('\xa0','')
         self.type = self.type.replace(' ', '')
-        self.parameters = self.get_parameters(cell)
+        self.parameters = self.get_parameters(html)
 
 
     def get_parameters(self, cell: str) -> list:
