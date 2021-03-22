@@ -13,8 +13,8 @@ class Function(object):
         self.parameters = self.get_parameters(html)
 
 
-    def get_parameters(self, cell: str) -> list:
-        soup = BeautifulSoup(cell, features="lxml")
+    def get_parameters(self, html: str) -> list:
+        soup = BeautifulSoup(html, 'html.parser')
         parameters_types = [x.get_text() for x in soup.find_all('span', class_='f_Keywords')][1:]
         parameters_names = [x.get_text() for x in soup.find_all('span', class_='f_Param')]
         parameters = [Parameter(x, y) for x, y in zip(parameters_names, parameters_types)]
